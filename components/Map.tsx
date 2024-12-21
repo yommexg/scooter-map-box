@@ -1,5 +1,6 @@
 import MapboxGL, {
   Camera,
+  CircleLayer,
   Images,
   LocationPuck,
   MapView,
@@ -42,13 +43,44 @@ export default function Map() {
     <MapView style={{ flex: 1 }} styleURL="mapbox://styles/mapbox/dark-v11">
       <Camera followUserLocation followZoomLevel={10} />
       <LocationPuck puckBearing="course" puckBearingEnabled={true} pulsing={{ isEnabled: true }} />
-      <ShapeSource id="scooters" shape={featureCollection(points)}>
+      <ShapeSource
+        id="scooters"
+        cluster
+        shape={featureCollection(points)}
+        onPress={(e) => console.log(JSON.stringify(e, null, 2))}>
+        <SymbolLayer
+          id="clusters-count"
+          sourceLayerID="scooters"
+          filter={['has', 'point_count']}
+          style={{
+            textField: '{point_count_abbreviated}',
+            textSize: 12,
+            textColor: '#FFFFFF',
+            textPitchAlignment: 'map',
+          }}
+          existing={true}
+        />
+        <CircleLayer
+          id="clusters"
+          belowLayerID="clusters-count"
+          filter={['has', 'point_count']}
+          style={{
+            circlePitchAlignment: 'map',
+            circleColor: '#42E100',
+            circleRadius: 20,
+            circleStrokeWidth: 2,
+            circleStrokeColor: 'white',
+          }}
+        />
+
         <SymbolLayer
           id="scooter-icons"
+          filter={['!', ['has', 'point_count']]}
           style={{
             iconImage: 'pin',
             iconSize: 0.4,
             iconAllowOverlap: true,
+            iconAnchor: 'bottom',
           }}
         />
         <Images images={{ pin }} />

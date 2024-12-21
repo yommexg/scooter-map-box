@@ -6,7 +6,14 @@ import Map from '~/components/Map';
 export default function Home() {
   return (
     <>
-      <Stack.Screen options={{ title: 'Home' }} />
+      <Stack.Screen
+        options={{
+          title: 'Anime Code Lord Scooter Guide',
+          headerTitleAlign: 'center',
+          headerTintColor: 'white',
+          headerStyle: [{ backgroundColor: '#42E100' }],
+        }}
+      />
       <Map />
     </>
   );
