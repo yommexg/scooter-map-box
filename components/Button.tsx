@@ -16,8 +16,8 @@ export const Button = forwardRef<View, ButtonProps>(({ title, ...touchableProps 
 const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
-    backgroundColor: '#6366F1',
-    borderRadius: 24,
+    backgroundColor: '#38C400',
+    borderRadius: 10,
     elevation: 5,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '600',
     textAlign: 'center',
   },

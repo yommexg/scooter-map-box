@@ -2,8 +2,9 @@ import { CircleLayer, Images, ShapeSource, SymbolLayer } from '@rnmapbox/maps';
 import { featureCollection, point } from '@turf/helpers';
 import { OnPressEvent } from '@rnmapbox/maps/lib/typescript/src/types/OnPressEvent';
 
-import pin from '~/assets/pin.png';
 import scooters from '~/data/scooter.json';
+//@ts-ignore
+import pin from '~/assets/pin.png';
 import { useScooter } from '~/providers/ScooterProvider';
 
 export default function ScooterMarkers() {
